@@ -1,0 +1,32 @@
+This repository contains an end-to-end pipeline for time-to-event (survival) predictive modeling using the cox proportional hazard regression model. Future work will include 
+models for when the proportional hazard assumption is not met as well as the deployment of a GUI to allow for the seamless creation of moedls and rapid delivering of 
+plots/insight. 
+
+The stages of the pipeline are as follows:
+ --Data ingestion
+ --Feature Selection
+ --Model Fitting
+ --Model Diagnostics and performance
+ --Insight
+    -- Get best survival curve (automated)
+    -- Get survival curve (user-specified)
+    -- Get expected time-to-event (automated)
+    -- Get probability of event within specified time (user-specified)
+    
+The beauty of cox models for time-to-event modeling is their ability to incorporate data on individuals for whom the event has not occurred for yet (censoring). As opposed to 
+standard linear regression models that require the event to occur for each individual. Additionally cox models do not rely on any distributional assumptions on the dependent 
+variable. Cox models also generate very useful survival tables that return the probability of the event occuring by time for each feature of interest. This type of insight can
+be extremely helpful in a variety of use cases. 
+
+As with most machine learning projects, the goal is to generate actionable and interpretable insight from large data sets to help guide decision making. For time-to-event 
+modeling, some of the most helpful insight is to understand which combination of variables lead to the shortest time-to-event. Using this we can take the necessary next best
+action whether it be to perform some kind of intervention at a population level or something more granular at the invidual level. In the population level case this pipeline will 
+return the top 5 variables or combinations of variables from the final model that yield the shortest median time-to-event time and at the invidual level the pipeline will 
+calculate their expected time-to-event if they had not yet experienced the event while also adjusting for the time they have currently gone without experiencing the event. 
+
+Motivating examples
+-- Retention on a product
+-- Time until conversion to a product
+-- Employee churn
+-- Time until death from a certain disease
+-- Time until stock market corrections
